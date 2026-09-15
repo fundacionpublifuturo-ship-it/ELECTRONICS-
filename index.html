@@ -319,7 +319,8 @@ p{margin:0}a{color:inherit}
 .navlink:hover{transform:translateY(-2px);border-color:var(--brand-300);color:var(--brand-700)}
 .navlink.active{background:linear-gradient(135deg,var(--navy-800),var(--brand-700));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(26,58,92,.28)}
 .nav-cta{margin-left:auto;flex:0 0 auto}
-@media(max-width:900px){.nav-cta{display:none}}
+.nav-ingresar{flex:0 0 auto}
+@media(max-width:900px){.nav-cta{display:none}.nav-ingresar{display:none}}
 /* ===== SECCIONES DE EMPRESA ===== */
 .section-pad{padding:var(--s16) 0}
 .section-pad.alt{background:var(--surface)}
@@ -509,6 +510,9 @@ p{margin:0}a{color:inherit}
       <input id="searchTop" type="search" placeholder="Buscar cargador, vidrio, audífonos…" inputmode="search" aria-label="Buscar productos">
     </div>
     <div class="appbar-actions">
+      <a class="icon-btn" href="admin.html" aria-label="Ingresar al portal" title="Portal administrativo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg>
+      </a>
       <button class="icon-btn" onclick="toggleTheme()" aria-label="Cambiar tema claro u oscuro">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
       </button>
@@ -526,7 +530,8 @@ p{margin:0}a{color:inherit}
       <a href="#nosotros" class="navlink" data-nav="nosotros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> ¿Por qué nosotros?</a>
       <a href="#faq" class="navlink" data-nav="faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg> Preguntas</a>
       <a href="#contacto" class="navlink" data-nav="contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Contacto</a>
-      <a href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn btn-primary nav-cta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg> Pedir ahora</a>
+      <a href="admin.html" class="btn btn-sec nav-cta" style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="M10 17l5-5-5-5M15 12H3"/></svg> Ingresar</a>
+      <a href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn btn-primary nav-ingresar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg> Pedir ahora</a>
     </div>
   </div>
 </header>
