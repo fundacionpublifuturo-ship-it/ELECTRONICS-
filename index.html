@@ -306,6 +306,70 @@ p{margin:0}a{color:inherit}
 .rv{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
 .rv.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+/* ===== NAV MENU (secciones) ===== */
+.appbar-top{border-top:3px solid var(--brand-700)}
+.navrow{border-top:1px solid var(--border);background:var(--surface)}
+.navrow .wrap{display:flex;align-items:center;gap:var(--s2);height:58px;overflow-x:auto;scrollbar-width:none}
+.navrow .wrap::-webkit-scrollbar{display:none}
+.navlink{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font:inherit;font-size:.9rem;font-weight:600;
+  color:var(--ink-700);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-full);
+  padding:9px 16px;cursor:pointer;text-decoration:none;min-height:42px;
+  transition:transform .14s var(--ease),border-color .14s var(--ease),background .14s var(--ease),color .14s var(--ease)}
+.navlink svg{width:17px;height:17px;flex:0 0 17px}
+.navlink:hover{transform:translateY(-2px);border-color:var(--brand-300);color:var(--brand-700)}
+.navlink.active{background:linear-gradient(135deg,var(--navy-800),var(--brand-700));color:#fff;border-color:transparent;box-shadow:0 4px 14px rgba(26,58,92,.28)}
+.nav-cta{margin-left:auto;flex:0 0 auto}
+@media(max-width:900px){.nav-cta{display:none}}
+/* ===== SECCIONES DE EMPRESA ===== */
+.section-pad{padding:var(--s16) 0}
+.section-pad.alt{background:var(--surface)}
+.sec-title{text-align:center;max-width:60ch;margin:0 auto var(--s10)}
+.sec-title .eyebrow{margin-bottom:14px}
+.sec-title p{color:var(--ink-500);margin-top:12px;font-size:1.02rem}
+.mv-grid{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+@media(min-width:768px){.mv-grid{grid-template-columns:1fr 1fr}}
+.mv-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-xl);padding:var(--s8);box-shadow:var(--e1);position:relative;overflow:hidden;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)}
+.mv-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--brand-500)}
+.mv-card.vis::after{background:var(--accent-warm)}
+.mv-card:hover{transform:translateY(-4px);box-shadow:var(--e2);border-color:var(--brand-300)}
+.mv-ic{width:52px;height:52px;border-radius:var(--r-md);background:var(--brand-50);color:var(--brand-600);display:grid;place-items:center;margin-bottom:var(--s4)}
+.mv-card.vis .mv-ic{background:var(--accent-warm-50);color:var(--accent-warm)}
+.mv-ic svg{width:26px;height:26px}
+.mv-card h3{margin-bottom:10px}
+.mv-card p{color:var(--ink-700);line-height:1.65}
+.values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--s5);margin-top:var(--s8)}
+.value{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--s6);box-shadow:var(--e1)}
+.value .vic{width:44px;height:44px;border-radius:var(--r-md);background:var(--brand-50);color:var(--brand-600);display:grid;place-items:center;margin-bottom:14px}
+.value .vic svg{width:22px;height:22px}
+.value h4{margin-bottom:6px}
+.value p{color:var(--ink-500);font-size:.9rem;line-height:1.55}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--s5)}
+.service{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--s6);box-shadow:var(--e1);text-align:center;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)}
+.service::after{content:none}
+.service:hover{transform:translateY(-4px);box-shadow:var(--e2);border-color:var(--brand-300)}
+.service .sic{width:56px;height:56px;border-radius:var(--r-lg);background:linear-gradient(135deg,var(--brand-50),var(--brand-100));color:var(--brand-700);display:grid;place-items:center;margin:0 auto var(--s4)}
+.service .sic svg{width:28px;height:28px}
+.service h4{margin-bottom:8px}
+.service p{color:var(--ink-500);font-size:.9rem}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:var(--s3)}
+.faq{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-md);overflow:hidden}
+.faq summary{padding:18px 20px;cursor:pointer;font-weight:700;color:var(--ink-900);font-size:.98rem;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;user-select:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .q-ic{width:22px;height:22px;flex:0 0 22px;color:var(--brand-600);transition:transform .2s var(--ease)}
+.faq[open] summary .q-ic{transform:rotate(45deg)}
+.faq .faq-body{padding:0 20px 18px;color:var(--ink-700);line-height:1.6;font-size:.94rem}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:var(--s5)}
+@media(min-width:768px){.contact-grid{grid-template-columns:repeat(3,1fr)}}
+.contact-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--s6);box-shadow:var(--e1);text-align:center;text-decoration:none;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)}
+.contact-card:hover{transform:translateY(-4px);box-shadow:var(--e2);border-color:var(--brand-300)}
+.contact-card .cic{width:52px;height:52px;border-radius:var(--r-full);display:grid;place-items:center;margin:0 auto var(--s4);color:#fff}
+.contact-card .cic svg{width:26px;height:26px}
+.contact-card.wa .cic{background:#25D366}.contact-card.ig .cic{background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)}.contact-card.tk .cic{background:#111}
+.contact-card b{display:block;color:var(--ink-900);font-size:1rem;margin-bottom:4px}
+.contact-card span{color:var(--ink-500);font-size:.88rem}
 /* ===== PANEL ADMIN ===== */
 .admin{position:fixed;inset:0;z-index:200;background:var(--canvas);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s var(--ease),visibility .3s var(--ease)}
 .admin.open{opacity:1;visibility:visible}
@@ -432,9 +496,9 @@ p{margin:0}a{color:inherit}
 </style>
 </head>
 <body>
-<header class="appbar">
+<header class="appbar appbar-top">
   <div class="wrap">
-    <a href="#" class="logo" aria-label="Electronics Parts, inicio">
+    <a href="#inicio" class="logo" aria-label="Electronics Parts, inicio">
       <span class="mark" aria-hidden="true">
         <svg viewBox="0 0 100 100"><polygon points="50,5 61,41 97,50 61,59 50,95 39,59 3,50 39,41" fill="#1A3A5C"/><polygon points="50,13 57,43 89,50 57,57 50,87 43,57 11,50 43,43" fill="#2BB8E6"/><polygon points="50,22 54,46 79,50 54,54 50,78 46,54 21,50 46,46" fill="#E8622A"/><polygon points="50,31 52,48 69,50 52,52 50,69 48,52 31,50 48,48" fill="#D62F2F"/></svg>
       </span>
@@ -454,8 +518,19 @@ p{margin:0}a{color:inherit}
       </button>
     </div>
   </div>
+  <div class="navrow">
+    <div class="wrap">
+      <a href="#inicio" class="navlink active" data-nav="inicio"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg> Inicio</a>
+      <a href="#catalogo" class="navlink" data-nav="catalogo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> Productos</a>
+      <a href="#servicios" class="navlink" data-nav="servicios"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4l-5.6 5.6 1.6 1.6 5.6-5.6a5 5 0 0 0 6.4-6.4l-2.5 2.5-2-2 2.9-2.1Z"/></svg> Servicios</a>
+      <a href="#nosotros" class="navlink" data-nav="nosotros"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> ¿Por qué nosotros?</a>
+      <a href="#faq" class="navlink" data-nav="faq"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg> Preguntas</a>
+      <a href="#contacto" class="navlink" data-nav="contacto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Contacto</a>
+      <a href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts%2C%20quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn btn-primary nav-cta"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg> Pedir ahora</a>
+    </div>
+  </div>
 </header>
-<section class="hero">
+<section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
       <span class="eyebrow">Accesorios · Celulares · Servicio técnico</span>
@@ -513,12 +588,92 @@ p{margin:0}a{color:inherit}
     <div class="grid" id="grid"></div>
   </div>
 </section>
+<!-- SERVICIOS -->
+<section class="section-pad alt" id="servicios">
+  <div class="wrap">
+    <div class="sec-title rv">
+      <span class="eyebrow">Lo que hacemos</span>
+      <h2>Nuestros servicios</h2>
+      <p>Somos tu tienda tecnológica de confianza en Ibagué: accesorios, celulares y reparación en un solo lugar.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><h4>Accesorios</h4><p>Cargadores, cables, vidrios templados, forros, audífonos, parlantes y protectores. Al por mayor y detal.</p></div>
+      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Celulares nuevos</h4><p>Equipos nuevos con garantía y las mejores marcas. Te asesoramos para elegir el que se ajusta a ti.</p></div>
+      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4l-5.6 5.6 1.6 1.6 5.6-5.6a5 5 0 0 0 6.4-6.4l-2.5 2.5-2-2 2.9-2.1Z"/></svg></div><h4>Servicio técnico</h4><p>Reparación de celulares: cambio de pantalla, batería, pines de carga y más, con repuestos de calidad.</p></div>
+      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Domicilio en Ibagué</h4><p>Llevamos tu pedido hasta la puerta de tu casa. Pide por WhatsApp y coordina la entrega.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS / MISION VISION -->
+<section class="section-pad" id="nosotros">
+  <div class="wrap">
+    <div class="sec-title rv">
+      <span class="eyebrow">¿Por qué nosotros?</span>
+      <h2>Sobre Electronics Parts</h2>
+      <p>Somos una tienda de tecnología en Ibagué enfocada en accesorios, celulares y servicio técnico, con la tendencia como lema y el cliente en el centro.</p>
+    </div>
+    <div class="mv-grid">
+      <div class="mv-card rv">
+        <div class="mv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Misión</h3>
+        <p>Ofrecer a los ibaguereños accesorios y celulares de calidad, junto con un servicio técnico confiable, a precios justos y con atención cercana. Buscamos que cada cliente encuentre lo que necesita para su equipo, siempre a la vanguardia de la tecnología y la tendencia.</p>
+      </div>
+      <div class="mv-card vis rv">
+        <div class="mv-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Visión</h3>
+        <p>Ser la tienda de tecnología y accesorios líder en Ibagué y el Tolima, reconocida por su variedad, calidad y cercanía. Aspiramos a crecer llevando nuestros productos y servicio técnico a más clientes, tanto en tienda como en línea, manteniendo la confianza como base de cada relación.</p>
+      </div>
+    </div>
+    <div class="values-grid">
+      <div class="value rv"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg></div><h4>Confianza</h4><p>Productos originales y garantía real. Respondemos por lo que vendemos.</p></div>
+      <div class="value rv"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><h4>Rapidez</h4><p>Atención ágil por WhatsApp y domicilio en Ibagué para que no esperes.</p></div>
+      <div class="value rv"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 12 3 4 7l8 4 8-4z"/><path d="M4 7v10l8 4 8-4V7"/></svg></div><h4>Variedad</h4><p>Amplio catálogo de accesorios y celulares para todas las marcas y gustos.</p></div>
+      <div class="value rv"><div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><h4>Cercanía</h4><p>Trato humano y asesoría honesta. Te ayudamos a elegir lo mejor para ti.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="stats"><div class="wrap"><div class="stats-inner rv">
   <div class="stat"><b class="tnum">1.100+</b><span>Productos publicados</span></div>
   <div class="stat"><b class="tnum">2.070</b><span>Clientes en Instagram</span></div>
   <div class="stat"><b class="tnum">24h</b><span>Respuesta por WhatsApp</span></div>
   <div class="stat"><b class="tnum">100%</b><span>Garantía en servicio técnico</span></div>
 </div></div></section>
+
+<!-- FAQ -->
+<section class="section-pad alt" id="faq">
+  <div class="wrap">
+    <div class="sec-title rv">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2>Resolvemos tus dudas</h2>
+      <p>Y si no encuentras tu respuesta aquí, escríbenos por WhatsApp y con gusto te ayudamos.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq rv"><summary>¿Hacen domicilios en Ibagué? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Sí. Llevamos tu pedido dentro de Ibagué. Coordina la dirección y el costo del domicilio directamente por WhatsApp al confirmar tu compra.</div></details>
+      <details class="faq rv"><summary>¿Los productos tienen garantía? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Sí. Manejamos productos originales con garantía. El tiempo de garantía depende del tipo de producto; pregúntanos por el artículo específico.</div></details>
+      <details class="faq rv"><summary>¿Venden al por mayor? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Claro. Trabajamos venta al por mayor y al detal. Escríbenos por WhatsApp para conocer precios especiales por cantidad.</div></details>
+      <details class="faq rv"><summary>¿Qué reparaciones hacen? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Servicio técnico de celulares: cambio de pantalla, batería, pin de carga, entre otros. Llévanos tu equipo o escríbenos para un diagnóstico.</div></details>
+      <details class="faq rv"><summary>¿Cómo pago mi pedido? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Puedes pagar en efectivo contra entrega o por transferencia. Al armar tu pedido en la web y confirmar por WhatsApp, acordamos el método contigo.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="section-pad" id="contacto">
+  <div class="wrap">
+    <div class="sec-title rv">
+      <span class="eyebrow">Contacto</span>
+      <h2>Hablemos</h2>
+      <p>Estamos en Ibagué, Tolima. Escríbenos por el canal que prefieras y te atendemos.</p>
+    </div>
+    <div class="contact-grid">
+      <a class="contact-card wa rv" href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></div><b>WhatsApp</b><span>322 398 0005</span></a>
+      <a class="contact-card ig rv" href="https://instagram.com/electronicspartscol" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div><b>Instagram</b><span>@electronicspartscol</span></a>
+      <a class="contact-card tk rv" href="https://tiktok.com/@electronicspartscol" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 3.9 4 4v3c-1.5 0-2.9-.5-4-1.3V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3Z"/></svg></div><b>TikTok</b><span>@electronicspartscol</span></a>
+    </div>
+  </div>
+</section>
 </main>
 <footer class="footer">
   <div class="wrap">
@@ -1117,6 +1272,16 @@ function exportSalesCSV(){const list=salesInRange();if(!list.length){toast('No h
 function backupData(){const data={version:1,fecha:new Date().toISOString(),products:PRODUCTS,sales:SALES};downloadFile('respaldo_electronics_'+Date.now()+'.json',JSON.stringify(data,null,2),'application/json');toast('Respaldo descargado',false,true)}
 function restoreData(file){const r=new FileReader();r.onload=e=>{try{const d=JSON.parse(e.target.result);if(!d.products||!Array.isArray(d.products))throw 0;openConfirm('Restaurar respaldo','Esto <b>reemplaza</b> tu catalogo y ventas actuales por los del archivo ('+d.products.length+' productos). Se recomienda descargar un respaldo antes.','Si, restaurar',()=>{PRODUCTS=d.products;SALES=d.sales||[];saveProducts();saveSales();renderInv();renderKPIs();renderGrid();renderSales();toast('Datos restaurados',false,true)},'ok')}catch(err){toast('Archivo invalido',true)}};r.readAsText(file)}
 function downloadFile(name,content,type){const blob=new Blob([content],{type:type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),1000)}
+/* ========= NAV SCROLL SPY ========= */
+function initNavSpy(){
+  const ids=['inicio','catalogo','servicios','nosotros','faq','contacto'];
+  const sections=ids.map(id=>document.getElementById(id)).filter(Boolean);
+  const links={};document.querySelectorAll('.navlink[data-nav]').forEach(l=>links[l.getAttribute('data-nav')]=l);
+  const spy=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;Object.values(links).forEach(l=>l.classList.remove('active'));if(links[id])links[id].classList.add('active')}});
+  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  sections.forEach(s=>spy.observe(s));
+}
 /* ========= INIT ========= */
 function init(){
   try{const s=localStorage.getItem(LS.theme);if(s)document.documentElement.setAttribute('data-theme',s)}catch(e){}
@@ -1136,6 +1301,7 @@ function init(){
   const iz=$('#imgZone');['dragover','dragenter'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.remove('drag')}));iz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f&&f.type.indexOf('image')===0)compressImage(f,src=>showImgPreview(src))});
   const cz=$('#csvZone');['dragover','dragenter'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.remove('drag')}));cz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)handleCSV(f)});
   $('#pCat').addEventListener('change',e=>{if(!editingId&&!$('#pSku').value)$('#pSku').placeholder=nextSku(e.target.value)});
+  initNavSpy();
   setTimeout(()=>{renderGrid();updateCartUI();bindValidation();initReveal();},650);
 }
 init();
