@@ -312,8 +312,7 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 /* ===== NAV MENU (secciones) ===== */
 .appbar-top{border-top:3px solid var(--brand-700)}
 .navrow{border-top:1px solid var(--border);background:var(--surface)}
-.navrow .wrap{display:flex;align-items:center;gap:10px;min-height:66px;padding-top:10px;padding-bottom:10px;overflow-x:auto;scrollbar-width:none}
-.navrow .wrap::-webkit-scrollbar{display:none}
+.navrow .wrap{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
 .navlink{display:inline-flex;align-items:center;gap:9px;white-space:nowrap;font:inherit;font-size:.92rem;font-weight:600;
   color:var(--ink-700);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-full);
   padding:11px 20px;cursor:pointer;text-decoration:none;min-height:46px;
@@ -324,7 +323,7 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 .navlink.active svg{opacity:1}
 .nav-cta{margin-left:auto;flex:0 0 auto}
 .nav-ingresar{flex:0 0 auto}
-@media(max-width:900px){.nav-cta{display:none}.nav-ingresar{display:none}.navlink{padding:10px 16px;font-size:.86rem}}
+@media(max-width:900px){.nav-cta{display:none}.nav-ingresar{display:none}.navlink{padding:10px 16px;font-size:.86rem}.navrow .wrap{justify-content:center;gap:8px}}
 /* ===== SECCIONES DE EMPRESA ===== */
 .section-pad{padding:var(--s16) 0}
 .section-pad.alt{background:var(--surface)}
