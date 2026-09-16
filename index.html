@@ -324,6 +324,10 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 .nav-cta{margin-left:auto;flex:0 0 auto}
 .nav-ingresar{flex:0 0 auto}
 @media(max-width:900px){.nav-cta{display:none}.nav-ingresar{display:none}.navlink{padding:10px 16px;font-size:.86rem}.navrow .wrap{justify-content:center;gap:8px}}
+/* ===== ROUTER SPA: cada sección es una página ===== */
+.view{display:none}
+.view.active{display:block;animation:viewIn .32s var(--ease)}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 /* ===== SECCIONES DE EMPRESA ===== */
 .section-pad{padding:var(--s16) 0}
 .section-pad.alt{background:var(--surface)}
@@ -538,6 +542,7 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
     </div>
   </div>
 </header>
+<div class="view active" id="view-inicio">
 <section class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-copy">
@@ -565,7 +570,14 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   </div>
 </section>
 <div class="strip" aria-hidden="true"><div class="marquee" id="marquee"></div></div>
-<main>
+<section class="stats"><div class="wrap"><div class="stats-inner rv">
+  <div class="stat"><b class="tnum">1.100+</b><span>Productos publicados</span></div>
+  <div class="stat"><b class="tnum">2.070</b><span>Clientes en Instagram</span></div>
+  <div class="stat"><b class="tnum">24h</b><span>Respuesta por WhatsApp</span></div>
+  <div class="stat"><b class="tnum">100%</b><span>Garantía en servicio técnico</span></div>
+</div></div></section>
+</div>
+<div class="view" id="view-catalogo">
 <section class="catalog" id="catalogo">
   <div class="wrap">
     <div class="sec-head rv"><div>
@@ -597,6 +609,8 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   </div>
 </section>
 <!-- SERVICIOS -->
+</div>
+<div class="view" id="view-servicios">
 <section class="section-pad alt" id="servicios">
   <div class="wrap">
     <div class="sec-title rv">
@@ -614,6 +628,8 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 </section>
 
 <!-- NOSOTROS / MISION VISION -->
+</div>
+<div class="view" id="view-nosotros">
 <section class="section-pad" id="nosotros">
   <div class="wrap">
     <div class="sec-title rv">
@@ -642,14 +658,10 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   </div>
 </section>
 
-<section class="stats"><div class="wrap"><div class="stats-inner rv">
-  <div class="stat"><b class="tnum">1.100+</b><span>Productos publicados</span></div>
-  <div class="stat"><b class="tnum">2.070</b><span>Clientes en Instagram</span></div>
-  <div class="stat"><b class="tnum">24h</b><span>Respuesta por WhatsApp</span></div>
-  <div class="stat"><b class="tnum">100%</b><span>Garantía en servicio técnico</span></div>
-</div></div></section>
 
 <!-- FAQ -->
+</div>
+<div class="view" id="view-faq">
 <section class="section-pad alt" id="faq">
   <div class="wrap">
     <div class="sec-title rv">
@@ -668,6 +680,8 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 </section>
 
 <!-- CONTACTO -->
+</div>
+<div class="view" id="view-contacto">
 <section class="section-pad" id="contacto">
   <div class="wrap">
     <div class="sec-title rv">
@@ -682,7 +696,7 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
     </div>
   </div>
 </section>
-</main>
+</div>
 <footer class="footer">
   <div class="wrap">
     <div class="brandcol">
@@ -1030,7 +1044,7 @@ function renderGrid(){
 }
 function renderSkeleton(){$('#grid').innerHTML=Array.from({length:8}).map(()=>'<div class="sk"><div class="b m"></div><div class="b l w60"></div><div class="b l w80"></div><div class="b l w40"></div><div class="b btn-sk"></div></div>').join('')}
 function setCat(id){activeCat=id;renderChips();renderGrid()}
-function filterCat(id){setCat(id)}
+function filterCat(id){setCat(id);if(typeof showPage==='function')showPage('catalogo')}
 function onSearch(v){query=(v||'').trim().toLowerCase();const a=$('#searchTop'),b=$('#searchMobile');if(a&&a.value!==v)a.value=v;if(b&&b.value!==v)b.value=v;renderGrid()}
 function openModal(id){
   const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
@@ -1281,14 +1295,31 @@ function backupData(){const data={version:1,fecha:new Date().toISOString(),produ
 function restoreData(file){const r=new FileReader();r.onload=e=>{try{const d=JSON.parse(e.target.result);if(!d.products||!Array.isArray(d.products))throw 0;openConfirm('Restaurar respaldo','Esto <b>reemplaza</b> tu catalogo y ventas actuales por los del archivo ('+d.products.length+' productos). Se recomienda descargar un respaldo antes.','Si, restaurar',()=>{PRODUCTS=d.products;SALES=d.sales||[];saveProducts();saveSales();renderInv();renderKPIs();renderGrid();renderSales();toast('Datos restaurados',false,true)},'ok')}catch(err){toast('Archivo invalido',true)}};r.readAsText(file)}
 function downloadFile(name,content,type){const blob=new Blob([content],{type:type});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),1000)}
 /* ========= NAV SCROLL SPY ========= */
-function initNavSpy(){
-  const ids=['inicio','catalogo','servicios','nosotros','faq','contacto'];
-  const sections=ids.map(id=>document.getElementById(id)).filter(Boolean);
-  const links={};document.querySelectorAll('.navlink[data-nav]').forEach(l=>links[l.getAttribute('data-nav')]=l);
-  const spy=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;Object.values(links).forEach(l=>l.classList.remove('active'));if(links[id])links[id].classList.add('active')}});
-  },{rootMargin:'-45% 0px -50% 0px',threshold:0});
-  sections.forEach(s=>spy.observe(s));
+/* ========= ROUTER SPA — cada sección es una página ========= */
+const VIEWS={inicio:'view-inicio',catalogo:'view-catalogo',servicios:'view-servicios',nosotros:'view-nosotros',faq:'view-faq',contacto:'view-contacto'};
+function showPage(name,push){
+  if(!VIEWS[name])name='inicio';
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el=document.getElementById(VIEWS[name]);if(el)el.classList.add('active');
+  document.querySelectorAll('.navlink[data-nav]').forEach(l=>l.classList.toggle('active',l.getAttribute('data-nav')===name));
+  window.scrollTo({top:0,behavior:'instant'in window?'instant':'auto'});
+  if(push!==false){try{history.replaceState(null,'','#'+name)}catch(e){location.hash=name}}
+  if(name==='catalogo'){renderGrid()}
+}
+function initRouter(){
+  // interceptar clics de navlinks y enlaces internos con hash
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    const href=a.getAttribute('href').slice(1);
+    if(VIEWS[href]||href===''){
+      a.addEventListener('click',e=>{e.preventDefault();showPage(href||'inicio')});
+    }
+  });
+  // navlinks del menú (por si data-nav difiere del href)
+  document.querySelectorAll('.navlink[data-nav]').forEach(a=>{
+    a.addEventListener('click',e=>{e.preventDefault();showPage(a.getAttribute('data-nav'))});
+  });
+  window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(VIEWS[h])showPage(h,false)});
+  const start=location.hash.slice(1);showPage(VIEWS[start]?start:'inicio',false);
 }
 /* ========= INIT ========= */
 function init(){
@@ -1309,7 +1340,7 @@ function init(){
   const iz=$('#imgZone');['dragover','dragenter'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.remove('drag')}));iz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f&&f.type.indexOf('image')===0)compressImage(f,src=>showImgPreview(src))});
   const cz=$('#csvZone');['dragover','dragenter'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.remove('drag')}));cz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)handleCSV(f)});
   $('#pCat').addEventListener('change',e=>{if(!editingId&&!$('#pSku').value)$('#pSku').placeholder=nextSku(e.target.value)});
-  initNavSpy();
+  initRouter();
   setTimeout(()=>{renderGrid();updateCartUI();bindValidation();initReveal();},650);
 }
 init();
