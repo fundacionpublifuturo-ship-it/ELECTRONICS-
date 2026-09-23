@@ -727,6 +727,55 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   .hero-actions .btn{width:100%}
 }
 
+
+/* ===== Servicios estilo PubliFuturo ===== */
+.svc-cat{margin-top:var(--s10)}
+.svc-cat:first-child{margin-top:var(--s6)}
+.svc-cat-hd{display:flex;align-items:center;gap:14px;margin-bottom:var(--s5)}
+.svc-cat-hd .ic{width:44px;height:44px;flex:0 0 44px;border-radius:var(--r-md);background:var(--brand-50);color:var(--brand-600);display:grid;place-items:center}
+.svc-cat-hd .ic svg{width:23px;height:23px}
+.svc-cat-hd h3{font-size:1.3rem}
+.svc-cat-hd .line{flex:1;height:1px;background:var(--border)}
+.svc-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:var(--s4)}
+.svc-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--s5);box-shadow:var(--e1);cursor:default;
+  transition:transform .18s var(--ease),box-shadow .18s var(--ease),border-color .18s var(--ease)}
+.svc-card:hover{transform:translateY(-4px);box-shadow:var(--e2);border-color:var(--brand-300)}
+.svc-card .sc-ic{width:48px;height:48px;border-radius:var(--r-md);display:grid;place-items:center;margin-bottom:14px;color:#fff}
+.svc-card .sc-ic svg{width:24px;height:24px}
+.svc-card h4{margin-bottom:6px;font-size:1rem}
+.svc-card p{font-size:13px;color:var(--ink-500);line-height:1.55}
+.svc-card p b{color:var(--ink-900)}
+/* ===== FAQ estilo CDA (filtros + acordeón) ===== */
+.faq-filters{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:var(--s8)}
+.faq-filters button{background:var(--surface);border:1.5px solid var(--border);color:var(--ink-700);font:inherit;font-size:.85rem;font-weight:600;
+  padding:9px 16px;border-radius:var(--r-full);cursor:pointer;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;
+  transition:transform .14s var(--ease),border-color .14s var(--ease),background .14s var(--ease),color .14s var(--ease)}
+.faq-filters button:hover{transform:translateY(-2px);border-color:var(--brand-300)}
+.faq-filters button.active{background:var(--brand-700);color:#fff;border-color:var(--brand-700)}
+.faq2{max-width:800px;margin:0 auto}
+.faq2-item{border-bottom:1.5px solid var(--border)}
+.faq2-item.hide{display:none}
+.faq2-q{display:flex;align-items:center;gap:14px;width:100%;background:none;border:0;cursor:pointer;font:inherit;text-align:left;padding:20px 4px;color:var(--ink-900)}
+.faq2-q .num{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;font-size:.8rem;font-weight:700;color:var(--brand-500);flex:0 0 auto}
+.faq2-q .qt{flex:1;font-weight:600;font-size:1rem}
+.faq2-q .pm{flex:0 0 auto;width:26px;height:26px;color:var(--brand-600);transition:transform .3s var(--ease)}
+.faq2-item.open .faq2-q .pm{transform:rotate(45deg)}
+.faq2-a{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.faq2-a p{padding:0 4px 20px 44px;color:var(--ink-500);line-height:1.6;font-size:.95rem}
+.faq-cta{max-width:800px;margin:var(--s10) auto 0;background:linear-gradient(135deg,var(--navy-800),var(--brand-700));border-radius:var(--r-xl);
+  padding:var(--s8);text-align:center;color:#fff}
+.faq-cta h3{color:#fff;margin-bottom:8px}
+.faq-cta p{color:#c8dae8;margin-bottom:var(--s5);font-size:.95rem}
+.faq-cta .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@media(max-width:600px){
+  .faq-filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scrollbar-width:none;touch-action:pan-x;overflow-y:hidden;padding-bottom:4px}
+  .faq-filters::-webkit-scrollbar{display:none}
+  .faq-filters button{flex:0 0 auto;font-size:.8rem}
+  .faq2-a p{padding-left:4px}
+  .faq-cta{padding:var(--s6)}
+  .faq-cta .btns .btn{width:100%}
+}
+
 </style>
 </head>
 <body>
@@ -885,13 +934,49 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
     <div class="sec-title rv">
       <span class="eyebrow">Lo que hacemos</span>
       <h2>Nuestros servicios</h2>
-      <p>Somos tu tienda tecnológica de confianza en Bucaramanga: accesorios, celulares y reparación en un solo lugar.</p>
+      <p>Todo lo que hacemos por ti: <b>venta de accesorios</b>, <b>celulares nuevos</b> y <b>servicio técnico</b>. Al por mayor y al detal, con domicilio y garantía.</p>
     </div>
-    <div class="services-grid">
-      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><h4>Accesorios</h4><p>Cargadores, cables, vidrios templados, forros, audífonos, parlantes y protectores. Al por mayor y detal.</p></div>
-      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Celulares nuevos</h4><p>Equipos nuevos con garantía y las mejores marcas. Te asesoramos para elegir el que se ajusta a ti.</p></div>
-      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4l-5.6 5.6 1.6 1.6 5.6-5.6a5 5 0 0 0 6.4-6.4l-2.5 2.5-2-2 2.9-2.1Z"/></svg></div><h4>Servicio técnico</h4><p>Reparación de celulares: cambio de pantalla, batería, pines de carga y más, con repuestos de calidad.</p></div>
-      <div class="service rv"><div class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Domicilio en Bucaramanga</h4><p>Llevamos tu pedido hasta la puerta de tu casa. Pide por WhatsApp y coordina la entrega.</p></div>
+
+    <!-- Categoría: Venta de productos -->
+    <div class="svc-cat rv">
+      <div class="svc-cat-hd">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+        <h3>Venta de productos</h3><span class="line"></span>
+      </div>
+      <div class="svc-cards rv-stagger">
+        <div class="svc-card"><div class="sc-ic" style="background:#2BB8E6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><h4>Cargadores y cables</h4><p>Cubos y cables <b>originales y certificados</b> para iPhone y Android. Carga rápida.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#1A3A5C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Vidrios y forros</h4><p>Vidrios templados, forros y <b>protectores de cámara</b> para todos los modelos.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#E8622A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14v-2a9 9 0 0 1 18 0v2"/><rect x="2" y="14" width="5" height="7" rx="2"/><rect x="17" y="14" width="5" height="7" rx="2"/></svg></div><h4>Audio y parlantes</h4><p>Audífonos, AirPods, manos libres y <b>parlantes</b> de las mejores marcas.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#159A5B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div><h4>Celulares nuevos</h4><p>Equipos <b>nuevos con garantía</b>. Te asesoramos para elegir el que se ajusta a ti.</p></div>
+      </div>
+    </div>
+
+    <!-- Categoría: Servicio técnico -->
+    <div class="svc-cat rv">
+      <div class="svc-cat-hd">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a5 5 0 0 0-6.4 6.4l-5.6 5.6 1.6 1.6 5.6-5.6a5 5 0 0 0 6.4-6.4l-2.5 2.5-2-2 2.9-2.1Z"/></svg></span>
+        <h3>Servicio técnico</h3><span class="line"></span>
+      </div>
+      <div class="svc-cards rv-stagger">
+        <div class="svc-card"><div class="sc-ic" style="background:#1A3A5C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6"/></svg></div><h4>Cambio de pantalla</h4><p>Reemplazo de <b>display</b> con repuestos de calidad y prueba antes de entregar.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#159A5B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="18" height="12" rx="2"/><path d="M23 13v-2M5 10v4"/></svg></div><h4>Cambio de batería</h4><p>Recupera la <b>autonomía</b> de tu celular con baterías nuevas.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#2BB8E6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z"/></svg></div><h4>Centro de carga</h4><p>Reparación del <b>pin de carga</b> cuando el equipo ya no carga bien.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#B8790A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div><h4>Software y diagnóstico</h4><p>Actualización, <b>diagnóstico</b> y solución de fallas de sistema. Trabajo rápido y garantizado.</p></div>
+      </div>
+    </div>
+
+    <!-- Categoría: Compra y entrega -->
+    <div class="svc-cat rv">
+      <div class="svc-cat-hd">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>
+        <h3>Compra y entrega</h3><span class="line"></span>
+      </div>
+      <div class="svc-cards rv-stagger">
+        <div class="svc-card"><div class="sc-ic" style="background:#7c3aed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>Venta al por mayor</h4><p>Precios especiales por <b>caja</b>. Ideal para tiendas y revendedores.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#E8622A"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Domicilio en Bucaramanga</h4><p>Llevamos tu pedido hasta la <b>puerta de tu casa</b>. Coordina por WhatsApp.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#2BB8E6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><h4>Envíos a todo el país</h4><p>Enviamos tus productos a <b>cualquier ciudad</b> de Colombia.</p></div>
+        <div class="svc-card"><div class="sc-ic" style="background:#159A5B"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4>Asesoría por WhatsApp</h4><p>Te ayudamos a elegir y resolvemos dudas <b>el mismo día</b>.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -994,15 +1079,18 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   <div class="wrap">
     <div class="sec-title rv">
       <span class="eyebrow">Preguntas frecuentes</span>
-      <h2>Resolvemos tus dudas</h2>
-      <p>Y si no encuentras tu respuesta aquí, escríbenos por WhatsApp y con gusto te ayudamos.</p>
+      <h2>Lo que más nos <span style="color:var(--brand-500)">preguntan</span></h2>
+      <p>Domicilios, garantía, formas de pago y servicio técnico. Y si no encuentras tu respuesta, escríbenos por WhatsApp.</p>
     </div>
-    <div class="faq-list">
-      <details class="faq rv"><summary>¿Hacen domicilios en Bucaramanga? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Sí. Llevamos tu pedido dentro de Bucaramanga. Coordina la dirección y el costo del domicilio directamente por WhatsApp al confirmar tu compra.</div></details>
-      <details class="faq rv"><summary>¿Los productos tienen garantía? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Sí. Manejamos productos originales con garantía. El tiempo de garantía depende del tipo de producto; pregúntanos por el artículo específico.</div></details>
-      <details class="faq rv"><summary>¿Venden al por mayor? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Claro. Trabajamos venta al por mayor y al detal. Escríbenos por WhatsApp para conocer precios especiales por cantidad.</div></details>
-      <details class="faq rv"><summary>¿Qué reparaciones hacen? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Servicio técnico de celulares: cambio de pantalla, batería, pin de carga, entre otros. Llévanos tu equipo o escríbenos para un diagnóstico.</div></details>
-      <details class="faq rv"><summary>¿Cómo pago mi pedido? <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></summary><div class="faq-body">Puedes pagar en efectivo contra entrega o por transferencia. Al armar tu pedido en la web y confirmar por WhatsApp, acordamos el método contigo.</div></details>
+    <div class="faq-filters rv" id="faqFilters"></div>
+    <div class="faq2 rv" id="faqList"></div>
+    <div class="faq-cta rv">
+      <h3>¿No resolviste tu duda?</h3>
+      <p>Escríbenos y un asesor te responde el mismo día.</p>
+      <div class="btns">
+        <a class="btn btn-wa" href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts%2C%20tengo%20una%20pregunta" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg> Escribir por WhatsApp</a>
+        <button class="btn btn-secondary" onclick="if(typeof epbotToggle==='function')epbotToggle(true)" style="background:rgba(255,255,255,.12);color:#fff;border-color:rgba(255,255,255,.25)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> Preguntar al asesor</button>
+      </div>
     </div>
   </div>
 </section>
@@ -1824,6 +1912,43 @@ function initRouter(){
   const start=location.hash.slice(1);showPage(VIEWS[start]?start:'inicio',false);
 }
 /* ========= INIT ========= */
+/* ===== FAQ con filtros (estilo CDA) ===== */
+const FAQ_CATS=[
+  {id:'all',name:'Todas',emoji:'📋'},
+  {id:'compra',name:'Compras y pagos',emoji:'🛒'},
+  {id:'envio',name:'Envíos y domicilio',emoji:'🚚'},
+  {id:'garantia',name:'Garantía',emoji:'🛡️'},
+  {id:'tecnico',name:'Servicio técnico',emoji:'🔧'},
+  {id:'mayorista',name:'Al por mayor',emoji:'📦'},
+];
+const FAQ=[
+  {cat:'envio',q:'¿Hacen domicilios en Bucaramanga?',a:'Sí. Llevamos tu pedido dentro de Bucaramanga hasta la puerta de tu casa. Coordinas la dirección y el costo del domicilio por WhatsApp al confirmar tu compra.'},
+  {cat:'envio',q:'¿Envían a otras ciudades?',a:'Sí, hacemos envíos a todo el país. Escríbenos por WhatsApp con tu ciudad y los productos para cotizarte el envío.'},
+  {cat:'garantia',q:'¿Los productos tienen garantía?',a:'Sí. Manejamos productos originales e importados con garantía. El tiempo depende del tipo de producto; pregúntanos por el artículo específico.'},
+  {cat:'mayorista',q:'¿Venden al por mayor?',a:'Claro. Trabajamos venta al por mayor y al detal, con precios especiales por caja. Escríbenos por WhatsApp para conocer las tarifas por cantidad y pedir la lista de precios.'},
+  {cat:'tecnico',q:'¿Qué reparaciones hacen?',a:'Servicio técnico de celulares: cambio de pantalla, cambio de batería, reparación del centro de carga (pin), software y diagnóstico. Trabajo rápido y garantizado.'},
+  {cat:'tecnico',q:'¿Cuánto tarda una reparación?',a:'Depende de la falla y el repuesto. Al llevar tu equipo o escribirnos por WhatsApp te damos un diagnóstico y un tiempo estimado.'},
+  {cat:'compra',q:'¿Cómo pago mi pedido?',a:'Puedes pagar en efectivo contra entrega o por transferencia. Al armar tu pedido en la web y confirmar por WhatsApp, acordamos el método contigo.'},
+  {cat:'compra',q:'¿Cómo hago un pedido desde la web?',a:'Busca el producto en el catálogo, agrégalo al carrito y confirma. Se abre WhatsApp con tu pedido listo para enviar; ahí coordinamos pago y entrega.'},
+  {cat:'mayorista',q:'¿Los productos son originales?',a:'Trabajamos producto importado directamente, con proceso de selección de proveedores. Manejamos líneas originales y certificadas; te indicamos la referencia de cada uno.'},
+];
+let faqCat='all';
+function renderFaq(){
+  var fl=document.getElementById('faqFilters');
+  if(fl)fl.innerHTML=FAQ_CATS.map(function(c){return '<button class="'+(faqCat===c.id?'active':'')+'" onclick="setFaqCat(\''+c.id+'\')">'+c.emoji+' '+c.name+'</button>'}).join('');
+  var list=document.getElementById('faqList');if(!list)return;
+  var items=FAQ.filter(function(f){return faqCat==='all'||f.cat===faqCat});
+  list.innerHTML=items.map(function(f,i){
+    var n=String(i+1).padStart(2,'0');
+    return '<div class="faq2-item" data-cat="'+f.cat+'"><button class="faq2-q" onclick="toggleFaq(this)"><span class="num">'+n+'</span><span class="qt">'+esc(f.q)+'</span><svg class="pm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg></button><div class="faq2-a"><p>'+esc(f.a)+'</p></div></div>';
+  }).join('');
+}
+function setFaqCat(id){faqCat=id;renderFaq()}
+function toggleFaq(btn){
+  var item=btn.parentElement;var open=item.classList.contains('open');
+  document.querySelectorAll('.faq2-item').forEach(function(it){it.classList.remove('open');it.querySelector('.faq2-a').style.maxHeight=null});
+  if(!open){item.classList.add('open');var a=item.querySelector('.faq2-a');a.style.maxHeight=a.scrollHeight+'px'}
+}
 /* ===== Banda de anuncio ===== */
 function closeAnnounce(){var a=document.getElementById('announce');if(a)a.classList.add('hide');try{localStorage.setItem('ep_announce','closed')}catch(e){}}
 function initAnnounce(){try{if(localStorage.getItem('ep_announce')==='closed'){var a=document.getElementById('announce');if(a)a.classList.add('hide')}}catch(e){}}
@@ -1863,7 +1988,7 @@ function init(){
   const iz=$('#imgZone');['dragover','dragenter'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>iz.addEventListener(ev,e=>{e.preventDefault();iz.classList.remove('drag')}));iz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f&&f.type.indexOf('image')===0)compressImage(f,src=>showImgPreview(src))});
   const cz=$('#csvZone');['dragover','dragenter'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.add('drag')}));['dragleave','drop'].forEach(ev=>cz.addEventListener(ev,e=>{e.preventDefault();cz.classList.remove('drag')}));cz.addEventListener('drop',e=>{const f=e.dataTransfer.files[0];if(f)handleCSV(f)});
   $('#pCat').addEventListener('change',e=>{if(!editingId&&!$('#pSku').value)$('#pSku').placeholder=nextSku(e.target.value)});
-  initAnnounce();renderLineas();renderBrands();
+  initAnnounce();renderLineas();renderBrands();renderFaq();
   initRouter();
   setTimeout(()=>{renderGrid();updateCartUI();bindValidation();initReveal();},650);
 }
