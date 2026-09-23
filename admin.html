@@ -252,6 +252,22 @@ td b{color:var(--ink-900)}
   .side-panel{width:100vw}
 }
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* Refuerzo móvil portal */
+@media(max-width:600px){
+  .kpis{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi b{font-size:1.4rem}
+  .wk-head h1{font-size:1.15rem}
+  .wk-head .acts{width:100%}
+  .wk-head .acts .btn{flex:1}
+  .ctrlbar{gap:8px}
+  .ctrlbar .btn{width:100%}
+  .kcol{flex:0 0 82vw}
+  .modal-card{max-width:100%}
+  .login-card{padding:26px 20px}
+  .role-grid{grid-template-columns:1fr 1fr}
+}
+
 </style>
 </head>
 <body>
