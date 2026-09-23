@@ -268,6 +268,24 @@ td b{color:var(--ink-900)}
   .role-grid{grid-template-columns:1fr 1fr}
 }
 
+
+/* Correcciones finales portal admin */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--cian);outline-offset:2px}
+.wk-head h1{overflow-wrap:break-word}
+@media(max-width:600px){
+  .topbar{padding:10px 12px;gap:8px}
+  .search-global{min-width:0}
+  .kcol{max-height:64vh}
+  .side-panel{width:100vw}
+  .modal{padding:10px}
+  .it-actions{gap:5px}
+  .wk-head{gap:10px}
+}
+@media(max-width:400px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .role-grid{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>

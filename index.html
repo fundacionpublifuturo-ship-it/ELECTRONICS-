@@ -776,6 +776,57 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
   .faq-cta .btns .btn{width:100%}
 }
 
+
+/* ============================================================
+   CORRECCIONES FINALES — estética y posicionamiento flotantes
+   ============================================================ */
+/* Jerarquía de flotantes: WhatsApp abajo, bot encima, nunca se tocan */
+.fab{bottom:calc(24px + env(safe-area-inset-bottom));right:20px}
+.epbot-fab{bottom:calc(90px + env(safe-area-inset-bottom));right:20px}
+/* En móvil, subir ambos por encima de la barra inferior (que mide ~62px) */
+@media(max-width:767px){
+  .fab{width:52px;height:52px;right:14px;bottom:calc(74px + env(safe-area-inset-bottom))}
+  .epbot-fab{right:14px;bottom:calc(134px + env(safe-area-inset-bottom));height:46px;padding:0 12px}
+  .epbot-fab .epbot-hint{display:none}
+}
+/* Ventana del bot: que no tape la barra inferior en móvil */
+@media(max-width:600px){
+  .epbot-win{height:82vh;bottom:0}
+}
+/* Consistencia: que las tarjetas nunca desborden su texto */
+.card-name,.svc-card h4,.promesa h4,.qcard b,.linea h4,.value h4{overflow-wrap:break-word;word-break:break-word}
+/* Toques de refinamiento visual */
+.eyebrow{line-height:1.4}
+.sec-title p{text-wrap:pretty}
+/* Evitar saltos de imagen en catálogo (reserva de espacio) */
+.card-media{background:var(--surface-2)}
+.card-media img{background:#fff}
+/* Botón WhatsApp del hero: alinear icono */
+.hero-actions .btn svg{flex:0 0 auto}
+/* Modal del producto: que la imagen no se estire fea */
+.modal-media img{object-fit:contain;background:#fff}
+/* Foco visible accesible en toda la página */
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--brand-500);outline-offset:2px}
+/* Scroll suave de anclas respetando header */
+:root{scroll-padding-top:130px}
+@media(max-width:767px){:root{scroll-padding-top:120px}}
+
+
+/* Firma del hero: limpieza en móvil pequeño */
+@media(max-width:520px){
+  .signature{min-height:220px}
+  .sig-chip{display:none} /* las píldoras se ven apretadas en pantallas chicas */
+  .sig-star,i.sig-star.logo-img{width:min(52%,150px);height:min(52%,150px)}
+  .sig-halo{width:170px;height:170px}
+  .sig-ring.r1{width:200px}.sig-ring.r2{width:155px}
+}
+/* Hero: el orden en móvil pone primero el texto, luego la firma */
+@media(max-width:959px){
+  .hero .wrap{grid-template-columns:1fr}
+  .signature{order:2}
+  .hero-copy{order:1}
+}
+
 </style>
 </head>
 <body>
@@ -890,7 +941,7 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 
 <section class="stats"><div class="wrap"><div class="stats-inner rv">
   <div class="stat"><b class="tnum">1.100+</b><span>Productos publicados</span></div>
-  <div class="stat"><b class="tnum">2.070</b><span>Clientes en Instagram</span></div>
+  <div class="stat"><b class="tnum">1.000+</b><span>Clientes atendidos</span></div>
   <div class="stat"><b class="tnum">24h</b><span>Respuesta por WhatsApp</span></div>
   <div class="stat"><b class="tnum">100%</b><span>Garantía en servicio técnico</span></div>
 </div></div></section>
