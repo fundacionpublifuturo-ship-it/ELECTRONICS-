@@ -577,6 +577,23 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 .rv-stagger>*{opacity:0;transform:translateY(20px);transition:opacity .55s var(--ease),transform .55s var(--ease)}
 .rv-stagger.in>*{opacity:1;transform:none}
 
+
+/* ===== Contacto ampliado ===== */
+.ct-grid{display:grid;grid-template-columns:1fr;gap:var(--s5);align-items:start}
+@media(min-width:960px){.ct-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.ct-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:var(--s6);box-shadow:var(--e1)}
+.ct-card h3{margin-bottom:6px}
+.ct-card .muted{color:var(--ink-500);font-size:14px;margin-bottom:var(--s5)}
+.ct-stack{display:flex;flex-direction:column;gap:var(--s4)}
+.ct-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:var(--s5)}
+.ct-actions .btn{flex:1;min-width:150px}
+.ct-check{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--ink-500);cursor:pointer;margin-top:4px}
+.ct-check input{width:18px;height:18px;margin-top:2px;accent-color:var(--brand-500);flex:0 0 18px}
+.ct-check b{color:var(--ink-700)}
+.ct-map{width:100%;height:240px;border:1.5px solid var(--border);border-radius:var(--r-lg);display:block}
+.btn-wa{background:#25D366;color:#fff;box-shadow:0 6px 16px rgba(37,211,102,.3)}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.4)}
+
 </style>
 </head>
 <body>
@@ -822,12 +839,46 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
     <div class="sec-title rv">
       <span class="eyebrow">Contacto</span>
       <h2>Hablemos</h2>
-      <p>Estamos en Bucaramanga, Santander. Escríbenos por el canal que prefieras y te atendemos.</p>
+      <p>Escríbenos por <b>WhatsApp</b> o visítanos en el <b>Centro de Bucaramanga</b>. Atendemos de <b>lunes a domingo</b>.</p>
     </div>
-    <div class="contact-grid">
-      <a class="contact-card wa rv" href="https://wa.me/573223980005?text=Hola%20Electronics%20Parts" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg></div><b>WhatsApp</b><span>322 398 0005</span></a>
-      <a class="contact-card ig rv" href="https://instagram.com/electronicspartscol" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div><b>Instagram</b><span>@electronicspartscol</span></a>
-      <a class="contact-card tk rv" href="https://tiktok.com/@electronicspartscol" target="_blank" rel="noopener"><div class="cic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.3 1.7 3.9 4 4v3c-1.5 0-2.9-.5-4-1.3V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V3h3Z"/></svg></div><b>TikTok</b><span>@electronicspartscol</span></a>
+    <div class="ct-grid">
+      <!-- Formulario -->
+      <div class="ct-card rv">
+        <h3>Envíanos un mensaje</h3>
+        <p class="muted">Cuéntanos qué necesitas y te respondemos el mismo día por WhatsApp.</p>
+        <div class="grid2">
+          <div class="field"><label for="ctName">Nombre <span class="req">*</span></label><input id="ctName" type="text" autocomplete="name" placeholder="Tu nombre"><span class="msg" id="ctmName" aria-live="polite"></span></div>
+          <div class="field"><label for="ctTel">WhatsApp <span class="req">*</span></label><input id="ctTel" type="tel" inputmode="numeric" autocomplete="tel" maxlength="10" placeholder="3XX XXX XXXX"><span class="msg" id="ctmTel" aria-live="polite"></span></div>
+        </div>
+        <div class="grid2">
+          <div class="field"><label for="ctCity">Ciudad <span class="req">*</span></label><input id="ctCity" type="text" autocomplete="address-level2" value="Bucaramanga"><span class="msg" id="ctmCity" aria-live="polite"></span></div>
+          <div class="field"><label for="ctInt">Interés</label><select id="ctInt">
+            <option>Cargadores</option><option>Vidrios y forros</option><option>Audio</option><option>Celulares</option><option>Streaming</option><option>Accesorios</option><option>Servicio técnico</option><option>Compra al por mayor</option><option>Otro</option>
+          </select></div>
+        </div>
+        <div class="field"><label for="ctMsg">Mensaje</label><textarea id="ctMsg" placeholder="¿Qué producto o servicio necesitas?"></textarea></div>
+        <label class="ct-check"><input type="checkbox" id="ctHd"><span>Autorizo el tratamiento de mis datos personales según la <b>Ley 1581 de 2012</b> y la política de privacidad de Electronics Parts.</span></label>
+        <span class="msg" id="ctmHd" aria-live="polite"></span>
+        <div class="ct-actions">
+          <button class="btn btn-primary" onclick="ctSend()">Enviar mensaje</button>
+          <a class="btn btn-wa" href="https://wa.me/573223980005?text=%C2%A1Hola!%20%F0%9F%91%8B%20Escribo%20desde%20la%20p%C3%A1gina%20web%20y%20quiero%20m%C3%A1s%20informaci%C3%B3n." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Z"/></svg> Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <!-- Datos + mapa -->
+      <div class="ct-stack">
+        <div class="ct-card rv">
+          <h3>Datos de contacto</h3>
+          <table class="mini-t" style="margin-top:10px">
+            <tr><td>WhatsApp</td><td><b>322 398 0005</b></td></tr>
+            <tr><td>Teléfono</td><td>765 25442</td></tr>
+            <tr><td>Dirección</td><td>Cl. 33 #18-36, Centro, Bucaramanga, Santander</td></tr>
+            <tr><td>Horario</td><td>Lun a Sáb: 8:00 a. m. – 7:00 p. m.<br>Domingo: 9:00 a. m. – 1:00 p. m.</td></tr>
+            <tr><td>Redes</td><td>@electronicspartscol</td></tr>
+          </table>
+        </div>
+        <iframe class="ct-map rv" title="Ubicación Electronics Parts" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Cl.+33+%2318-36,+Centro,+Bucaramanga,+Santander&output=embed"></iframe>
+        <a class="btn btn-secondary rv" style="width:100%" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Cl.+33+%2318-36,+Centro,+Bucaramanga,+Santander"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M9 20l-5.5 3 1-6L0 12l6-1 3-5.5 3 5.5 6 1-4.5 5 1 6z" transform="scale(0)"/><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Cómo llegar</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1659,6 +1710,46 @@ function epbotSend(){var i=document.getElementById('epbotInput');var v=i.value.t
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){var w=document.getElementById('epbotWin');if(w&&w.classList.contains('epbot-on'))epbotToggle(false)}});
   try{if(sessionStorage.getItem('epbot_open')==='1')epbotToggle(true)}catch(e){}
 })();
+
+
+/* ===== Contacto: validación + envío a WhatsApp ===== */
+function ctClean(v){return (v||'').replace(/\D/g,'').replace(/^57(?=\d{10}$)/,'');}
+function ctValid(id,msgId,rule,force){
+  var el=document.getElementById(id),m=document.getElementById(msgId),v=el.value;
+  if(!v.trim()&&!force){el.classList.remove('good','bad');if(m)m.textContent='';return false;}
+  var err=rule(v);el.classList.toggle('bad',!!err);el.classList.toggle('good',!err);if(m)m.textContent=err;return !err;
+}
+var ctRules={
+  name:function(v){return v.trim().length<3?'Escribe tu nombre completo.':'';},
+  tel:function(v){var d=ctClean(v);if(d.length!==10)return 'El WhatsApp debe tener 10 dígitos.';if(d.charAt(0)!=='3')return 'Debe ser un celular (empieza por 3).';return '';},
+  city:function(v){return v.trim().length<3?'Escribe tu ciudad.':'';}
+};
+(function ctBind(){
+  var map=[['ctName','ctmName','name'],['ctTel','ctmTel','tel'],['ctCity','ctmCity','city']];
+  map.forEach(function(x){var el=document.getElementById(x[0]);if(!el)return;
+    el.addEventListener('input',function(){ctValid(x[0],x[1],ctRules[x[2]],false)});
+    el.addEventListener('blur',function(){ctValid(x[0],x[1],ctRules[x[2]],true)});
+  });
+  var tel=document.getElementById('ctTel');if(tel)tel.addEventListener('input',function(e){e.target.value=e.target.value.replace(/\D/g,'').slice(0,10)});
+})();
+function ctSend(){
+  var okN=ctValid('ctName','ctmName',ctRules.name,true);
+  var okT=ctValid('ctTel','ctmTel',ctRules.tel,true);
+  var okC=ctValid('ctCity','ctmCity',ctRules.city,true);
+  var hd=document.getElementById('ctHd').checked;
+  document.getElementById('ctmHd').textContent=hd?'':'Debes autorizar el tratamiento de tus datos.';
+  if(!(okN&&okT&&okC)||!hd){toast('Revisa los campos marcados',true);return;}
+  var name=document.getElementById('ctName').value.trim();
+  var tel=ctClean(document.getElementById('ctTel').value);
+  var city=document.getElementById('ctCity').value.trim();
+  var intr=document.getElementById('ctInt').value;
+  var msg=document.getElementById('ctMsg').value.trim();
+  var texto='¡Hola! 👋\n\nSoy *'+name+'* de *'+city+'*.\n\n📌 Me interesa: *'+intr+'*\n'+(msg?'💬 '+msg+'\n':'')+'\n📲 Mi WhatsApp: '+tel;
+  window.open('https://wa.me/'+WHATSAPP+'?text='+encodeURIComponent(texto),'_blank');
+  toast('Abriendo WhatsApp con tu mensaje…',false,true);
+  document.getElementById('ctName').value='';document.getElementById('ctTel').value='';document.getElementById('ctMsg').value='';document.getElementById('ctHd').checked=false;
+  ['ctName','ctTel','ctCity'].forEach(function(id){document.getElementById(id).classList.remove('good','bad')});
+}
 
 </script>
 </body>
