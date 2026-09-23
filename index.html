@@ -323,7 +323,12 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
 .navlink.active svg{opacity:1}
 .nav-cta{margin-left:auto;flex:0 0 auto}
 .nav-ingresar{flex:0 0 auto}
-@media(max-width:900px){.nav-cta{display:none}.nav-ingresar{display:none}.navlink{padding:10px 16px;font-size:.86rem}.navrow .wrap{justify-content:center;gap:8px}}
+@media(max-width:900px){
+  .nav-cta{display:none}.nav-ingresar{display:none}
+  .navlink{padding:9px 15px;font-size:.85rem;flex:0 0 auto}
+  .navrow .wrap{flex-wrap:nowrap;justify-content:flex-start;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:10px 14px}
+  .navrow .wrap::-webkit-scrollbar{display:none}
+}
 /* ===== ROUTER SPA: cada sección es una página ===== */
 .view{display:none}
 .view.active{display:block;animation:viewIn .32s var(--ease)}
@@ -648,7 +653,9 @@ i.sig-star.logo-img{width:min(64%,230px);height:min(64%,230px)}
    REFUERZO MÓVIL — vista optimizada para celular
    ============================================================ */
 @media(max-width:767px){
-  /* Header más compacto */
+  /* Header más compacto y opaco para que no se transparente sobre el hero */
+  .appbar{background:var(--surface)}
+  .navrow{background:var(--surface)}
   .appbar .wrap{height:58px;gap:10px;padding-left:14px;padding-right:14px}
   .logo .mark{width:34px;height:34px}
   .logo b{font-size:.9rem}
