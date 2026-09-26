@@ -827,6 +827,32 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   .hero-copy{order:1}
 }
 
+
+/* ===== Filtros avanzados de catálogo ===== */
+.filters-adv{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px}
+.filters-adv .fadv{display:flex;flex-direction:column;gap:4px}
+.filters-adv label.lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-500)}
+.filters-adv select,.filters-adv input[type=search]{min-height:40px;padding:8px 12px;border:1.5px solid var(--border);border-radius:var(--r-md);background:var(--surface);color:var(--ink-900);font:inherit;font-size:.88rem}
+.filters-adv select:focus,.filters-adv input:focus{outline:none;border-color:var(--brand-500);box-shadow:0 0 0 3px var(--ring)}
+.avail-toggle{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--ink-700);user-select:none}
+.avail-toggle input{width:0;height:0;opacity:0;position:absolute}
+.avail-toggle .sw{width:40px;height:23px;border-radius:99px;background:var(--border);position:relative;transition:background .16s var(--ease);flex:0 0 40px}
+.avail-toggle .sw::after{content:'';position:absolute;width:17px;height:17px;border-radius:50%;background:#fff;top:3px;left:3px;transition:transform .16s var(--ease);box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.avail-toggle input:checked+.sw{background:var(--brand-500)}
+.avail-toggle input:checked+.sw::after{transform:translateX(17px)}
+.card-name mark{background:var(--brand-100);color:var(--brand-700);border-radius:3px;padding:0 2px}
+.clear-filters{background:none;border:0;color:var(--brand-600);cursor:pointer;font:inherit;font-size:.82rem;font-weight:600;text-decoration:underline}
+/* Precio por volumen en modal */
+.vol-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:.88rem}
+.vol-table th{text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-500);padding:8px 10px;background:var(--surface-2);border-radius:8px 0 0 0}
+.vol-table th:last-child{text-align:right;border-radius:0 8px 0 0}
+.vol-table td{padding:9px 10px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+.vol-table td:last-child{text-align:right;font-weight:700;color:var(--ink-900)}
+.vol-table tr:last-child td{border-bottom:0}
+.vol-badge{display:inline-block;font-size:11px;font-weight:700;color:var(--verde);background:var(--verde-50);padding:2px 8px;border-radius:99px;margin-left:6px}
+.vol-note{font-size:12px;color:var(--ink-500);margin-top:6px}
+@media(max-width:600px){.filters-adv{gap:8px}.filters-adv .fadv{flex:1;min-width:0}.filters-adv select{width:100%}}
+
 </style>
 </head>
 <body>
@@ -962,16 +988,23 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         </div>
       </div>
       <div class="chips" id="chips" role="tablist" aria-label="Categorías"></div>
-      <div class="filters-row">
-        <span class="count tnum" id="resultCount">—</span>
-        <div class="field" style="width:auto">
+      <div class="filters-adv">
+        <div class="fadv"><label class="lbl" for="fMarca">Marca</label>
+          <select id="fMarca" aria-label="Filtrar por marca"><option value="all">Todas</option></select></div>
+        <div class="fadv"><label class="lbl" for="sort">Ordenar</label>
           <select class="sort-select" id="sort" aria-label="Ordenar productos">
-            <option value="rel">Ordenar: destacados</option>
+            <option value="rel">Destacados</option>
             <option value="price-asc">Precio: menor a mayor</option>
             <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre: A → Z</option>
+            <option value="name-desc">Nombre: Z → A</option>
             <option value="new">Nuevos primero</option>
-          </select>
-        </div>
+          </select></div>
+        <label class="avail-toggle" style="align-self:flex-end;margin-bottom:2px"><input type="checkbox" id="fAvail" onchange="onAvail(this.checked)"><span class="sw"></span>Solo disponibles</label>
+        <button class="clear-filters" style="align-self:flex-end;margin-bottom:6px" onclick="clearFilters()">Limpiar filtros</button>
+      </div>
+      <div class="filters-row" style="margin-top:10px">
+        <span class="count tnum" id="resultCount">—</span>
       </div>
     </div>
     <div class="grid" id="grid"></div>
@@ -1597,7 +1630,11 @@ const SEED=[
 let PRODUCTS=loadProducts();
 let SALES=loadSales();
 let cart=loadCart();
-let activeCat='all',query='',sortMode='rel';
+let activeCat='all',query='',sortMode='rel',activeMarca='all',onlyAvail=false;
+/* Marca inferida del nombre del producto (el catálogo no trae campo marca) */
+const MARCAS_KNOWN=['iPhone','Apple','AirPods','Samsung','Xiaomi','Redmi','Tecno','JBL','Bose','Huawei','Motorola','Amazon','Fire TV','Realme','Oppo'];
+function marcaDe(p){if(p.marca)return p.marca;const n=(p.name||'');for(const m of MARCAS_KNOWN){if(n.toLowerCase().includes(m.toLowerCase()))return (m==='Redmi'||m==='AirPods'||m==='iPhone'||m==='Fire TV')?({Redmi:'Xiaomi',AirPods:'Apple',iPhone:'Apple','Fire TV':'Amazon'}[m]):m}return 'Genérico'}
+function marcasList(){const s=new Set();publicList().forEach(p=>s.add(marcaDe(p)));return[...s].sort()}
 let editingId=null,formImg='';
 let salesRange='month',customFrom=null,customTo=null;
 const fmt=n=>'$'+Number(n||0).toLocaleString('es-CO');
@@ -1652,11 +1689,36 @@ function phSVG(){return '<svg class="ph" viewBox="0 0 24 24" fill="none" stroke=
 function badgePill(b){const m={new:['pill-new','Nuevo'],offer:['pill-offer','Oferta'],top:['pill-top','Mas vendido']};return m[b]?'<span class="pill '+m[b][0]+'">'+m[b][1]+'</span>':''}
 function publicList(){return PRODUCTS.filter(p=>!p.hidden&&p.stock>0)}
 function getFiltered(){
-  let list=publicList().filter(p=>{const okC=activeCat==='all'||p.cat===activeCat;const okQ=!query||(p.name+' '+catById(p.cat).name).toLowerCase().includes(query);return okC&&okQ});
+  let list=publicList().filter(p=>{
+    const okC=activeCat==='all'||p.cat===activeCat;
+    const okM=activeMarca==='all'||marcaDe(p)===activeMarca;
+    const okA=!onlyAvail||p.stock>0;
+    const okQ=!query||(p.name+' '+catById(p.cat).name+' '+marcaDe(p)+' '+(p.sku||'')).toLowerCase().includes(query);
+    return okC&&okM&&okA&&okQ;
+  });
   if(sortMode==='price-asc')list.sort((a,b)=>(a.offer||a.price)-(b.offer||b.price));
   else if(sortMode==='price-desc')list.sort((a,b)=>(b.offer||b.price)-(a.offer||a.price));
+  else if(sortMode==='name-asc')list.sort((a,b)=>a.name.localeCompare(b.name,'es'));
+  else if(sortMode==='name-desc')list.sort((a,b)=>b.name.localeCompare(a.name,'es'));
   else if(sortMode==='new')list.sort((a,b)=>(b.new?1:0)-(a.new?1:0));
   return list;
+}
+function hilite(txt){if(!query)return esc(txt);const i=txt.toLowerCase().indexOf(query);if(i<0)return esc(txt);return esc(txt.slice(0,i))+'<mark>'+esc(txt.slice(i,i+query.length))+'</mark>'+esc(txt.slice(i+query.length))}
+function onAvail(v){onlyAvail=v;renderGrid()}
+function setMarca(v){activeMarca=v;renderGrid()}
+function clearFilters(){activeCat='all';activeMarca='all';onlyAvail=false;query='';sortMode='rel';
+  const s=$('#sort');if(s)s.value='rel';const m=$('#fMarca');if(m)m.value='all';const a=$('#fAvail');if(a)a.checked=false;
+  const st=$('#searchTop'),sm=$('#searchMobile');if(st)st.value='';if(sm)sm.value='';
+  renderChips();renderMarcasSelect();renderGrid()}
+function renderMarcasSelect(){const el=$('#fMarca');if(!el)return;const cur=activeMarca;el.innerHTML='<option value="all">Todas</option>'+marcasList().map(m=>'<option value="'+esc(m)+'"'+(cur===m?' selected':'')+'>'+esc(m)+'</option>').join('')}
+/* Precio por volumen (mayoreo): 1-4 base · 5-11 -5% · 12+ -10% */
+function volTable(base){
+  const p5=Math.round(base*0.95),p12=Math.round(base*0.90);
+  return '<table class="vol-table"><thead><tr><th>Cantidad</th><th>Precio por unidad</th></tr></thead><tbody>'+
+    '<tr><td>1 a 4 unidades</td><td class="tnum">'+fmt(base)+'</td></tr>'+
+    '<tr><td>5 a 11 unidades <span class="vol-badge">−5%</span></td><td class="tnum">'+fmt(p5)+'</td></tr>'+
+    '<tr><td>12 o más <span class="vol-badge">−10%</span></td><td class="tnum">'+fmt(p12)+'</td></tr>'+
+    '</tbody></table><div class="vol-note">Precios al por mayor. El descuento se coordina por WhatsApp al confirmar el pedido.</div>';
 }
 function renderGrid(){
   const grid=$('#grid'),list=getFiltered();
@@ -1667,7 +1729,7 @@ function renderGrid(){
     const stockTxt=last?'Ultima unidad!':(p.stock<=5?'Ultimas '+p.stock:'Disponible');
     const badges=last?'<span class="pill pill-last">Ultima unidad</span>':badgePill(p.badge);
     return '<article class="card"><div class="card-media"><div class="card-badges">'+badges+'</div>'+(p.img?'<img src="'+p.img+'" alt="'+esc(p.name)+'" loading="lazy">':phSVG())+'</div>'+
-      '<div class="card-body" onclick="openModal('+p.id+')" style="cursor:pointer"><span class="card-cat">'+cat.name+'</span><span class="card-name">'+esc(p.name)+'</span>'+
+      '<div class="card-body" onclick="openModal('+p.id+')" style="cursor:pointer"><span class="card-cat">'+cat.name+'</span><span class="card-name">'+hilite(p.name)+'</span>'+
       '<div class="card-price"><span class="now tnum">'+fmt(priceNow)+'</span>'+(p.offer?'<span class="was tnum">'+fmt(p.price)+'</span>':'')+'</div>'+
       '<span class="card-stock '+(p.stock<=5?'low':'')+'">'+stockTxt+'</span></div>'+
       '<div class="card-foot"><button class="btn btn-navy btn-block btn-sm" onclick="addToCart('+p.id+')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg> Agregar</button></div></article>';
@@ -1681,7 +1743,7 @@ function openModal(id){
   const p=PRODUCTS.find(x=>x.id===id);if(!p)return;
   const cat=catById(p.cat),priceNow=p.offer||p.price,last=p.stock===1;
   $('#modalMedia').innerHTML='<button class="icon-btn modal-close" onclick="closeModal()" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>'+(p.img?'<img src="'+p.img+'" alt="'+esc(p.name)+'">':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="width:96px;height:96px;color:var(--ink-300)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>');
-  $('#modalInfo').innerHTML='<span class="card-cat">'+cat.name+'</span><h3>'+esc(p.name)+'</h3><div class="card-price"><span class="now tnum">'+fmt(priceNow)+'</span>'+(p.offer?'<span class="was tnum">'+fmt(p.price)+'</span>':'')+'</div><div style="display:flex;gap:8px">'+(last?'<span class="pill pill-last">Ultima unidad</span>':(badgePill(p.badge)||''))+'</div><p class="desc">'+esc(p.desc||'')+'</p><div style="margin-top:auto;display:flex;gap:10px;padding-top:12px"><button class="btn btn-navy btn-block" onclick="addToCart('+p.id+');closeModal()">Agregar al carrito</button></div>';
+  $('#modalInfo').innerHTML='<span class="card-cat">'+cat.name+' · '+esc(marcaDe(p))+'</span><h3>'+esc(p.name)+'</h3><div class="card-price"><span class="now tnum">'+fmt(priceNow)+'</span>'+(p.offer?'<span class="was tnum">'+fmt(p.price)+'</span>':'')+'</div><div style="display:flex;gap:8px">'+(last?'<span class="pill pill-last">Ultima unidad</span>':(badgePill(p.badge)||''))+'</div><p class="desc">'+esc(p.desc||'')+'</p>'+volTable(priceNow)+'<div style="margin-top:auto;display:flex;gap:10px;padding-top:12px"><button class="btn btn-navy btn-block" onclick="addToCart('+p.id+');closeModal()">Agregar al carrito</button></div>';
   $('#modal').classList.add('open');document.body.style.overflow='hidden';
 }
 function closeModal(){$('#modal').classList.remove('open');if(!$('#drawer').classList.contains('open'))document.body.style.overflow=''}
@@ -2028,6 +2090,8 @@ function init(){
   $('#searchTop').addEventListener('input',e=>onSearch(e.target.value));
   $('#searchMobile').addEventListener('input',e=>onSearch(e.target.value));
   $('#sort').addEventListener('change',e=>{sortMode=e.target.value;renderGrid()});
+  var fm=$('#fMarca');if(fm)fm.addEventListener('change',e=>setMarca(e.target.value));
+  renderMarcasSelect();
   // admin listeners
   $('#invSearch').addEventListener('input',e=>{adminSearch=e.target.value;adminPage=1;renderInv()});
   $('#invCat').addEventListener('change',e=>{adminCatF=e.target.value;adminPage=1;renderInv()});
